@@ -4,7 +4,7 @@ type json =
   | JString of string
   | JNumber of int
   | JBool of bool
-  | JNull
+  (*| JNull*)
 
 type token =
   | LBrace
@@ -17,7 +17,7 @@ type token =
   | Number of int
   | True
   | False
-  | Null
+  (*| Null*)
 
 type person = {
    name: string;
@@ -75,7 +75,7 @@ let rec parse tokens =
       | Number n -> (JNumber n, rest)
       | True -> (JBool true, rest)
       | False -> (JBool false, rest)
-      | Null -> (JNull, rest)
+      (*| Null -> (JNull, rest)*)
       | _ -> failwith "Invalid JSON"
 
 and parse_object tokens acc =
@@ -151,7 +151,7 @@ let print_json_obj json =
                 | JString s -> Printf.printf "%s: [%s]\n" k s
                 | JNumber n -> Printf.printf "%s: [%d]\n" k n
                 | JBool b -> Printf.printf "%s: [%b]\n" k b
-                | JNull -> Printf.printf "%s: [null]\n" k
+                (*| JNull -> Printf.printf "%s: [null]\n" k*)
                 | _ -> ()) a
         | _ -> ()) fields;
   | _ -> ();
